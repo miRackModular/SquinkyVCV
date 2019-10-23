@@ -12,6 +12,7 @@ using Button = ::rack::ui::Button;
 using Widget = ::rack::widget::Widget;
 using Label = ::rack::ui::Label;
 
+#include "MidiSequencer.h"
 class Button2 : public Button
 {
 public:
@@ -21,6 +22,9 @@ public:
     }
 
     void onDragEnd(const ::rack::event::DragEnd& e) override {
+          printf("onDrageng xform execute our selection has %d notes\n",  
+            screen->_seq()->selection->size()); fflush(stdout);
+
         Button::onDragEnd(e);
         //DEBUG("on DRAG END FOR ME handler = %d", bool(handler));
 #if 1
@@ -37,8 +41,10 @@ public:
     }
 
     std::function<void()> handler = nullptr;
+    InputScreen* screen = nullptr;
 };
 
+#include "MidiSequencer.h"
 InputScreen::InputScreen(const ::rack::math::Vec& pos,
     const ::rack::math::Vec& size,
     MidiSequencerPtr seq,
@@ -48,9 +54,10 @@ InputScreen::InputScreen(const ::rack::math::Vec& pos,
     box.pos = pos;
     box.size = size;
     this->dismisser = _dismisser; 
-    DEBUG("dismisser = %d", bool(_dismisser));
+    DEBUG("INputScreen ctor dismisser = %d", bool(_dismisser));
 
     auto ok = new Button2();
+    ok->screen = this;
     ok->text = "OK";
     float x = 100;
     float y = 200;
@@ -58,6 +65,8 @@ InputScreen::InputScreen(const ::rack::math::Vec& pos,
     ok->setSize(Vec(80, 30));
     this->addChild(ok);   
     ok->handler = dismisser;
+
+    WARN("screen ctor end our selection has %d notes",  _seq()->selection->size());
 
 }
 

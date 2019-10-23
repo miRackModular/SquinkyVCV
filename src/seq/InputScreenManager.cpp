@@ -15,9 +15,13 @@ InputScreenManager::~InputScreenManager()
   // DEBUG("dtor iss 2");
 }
 
+#include "MidiSequencer.h"
 void InputScreenManager::dismiss()
 {
     DEBUG("In manager dismiis handler");
+    if ( screen) {
+    printf("Entering xform execute our selection has %d notes\n",  screen->_seq()->selection->size()); fflush(stdout);
+    }
 
     auto tempScreen = screen;
     auto tempParent = parent;

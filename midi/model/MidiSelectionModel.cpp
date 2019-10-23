@@ -37,6 +37,7 @@ void MidiSelectionModel::setAuditionSuppressed(bool b)
 
 void MidiSelectionModel::select(std::shared_ptr<MidiEvent> event)
 {
+    printf("clearing selection on select\n"); fflush(stdout);
     selection.clear();
     assert(selection.empty());
     add(event);
@@ -55,13 +56,16 @@ void MidiSelectionModel::addToSelection(std::shared_ptr<MidiEvent> event, bool k
     }
 
     if (!keepExisting) {
+        printf("clearing selection on addToSelection\n"); fflush(stdout);
         selection.clear();
+
     }
     add(event);
 }
 
 void MidiSelectionModel::removeFromSelection(std::shared_ptr<MidiEvent> event)
 {
+     printf("remove frm  selection on select\n"); fflush(stdout);
     auto it = selection.find(event);
     assert(it != selection.end());
     if (it != selection.end()) {
@@ -81,6 +85,7 @@ MidiSelectionModel::const_iterator MidiSelectionModel::end() const
 
 void MidiSelectionModel::clear()
 {
+    printf("selection::clear\n"); fflush(stdout);
     selection.clear();
 }
 
@@ -140,6 +145,7 @@ public:
 
 MidiSelectionModelPtr MidiSelectionModel::clone() const
 {
+    printf("clone selection\n"); fflush(stdout);
     // Clones ones never need to drive audition
     auto nullAudition = std::make_shared<NullAudition>();
     MidiSelectionModelPtr ret = std::make_shared<MidiSelectionModel>(nullAudition);

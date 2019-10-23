@@ -30,6 +30,7 @@ public:
 
    std::vector<float> getValues() const;
 
+   MidiSequencerPtr _seq() { return sequencer; }
 protected:
    MidiSequencerPtr sequencer;
    std::function<void()> dismisser = nullptr;

@@ -296,7 +296,7 @@ void NoteDisplay::onDragDrop(const event::DragDrop &e)
 
 void NoteDisplay::onButton(const event::Button &e)
 {
-   // printf("on button press=%d rel=%d\n", e.action == GLFW_PRESS, e.action==GLFW_RELEASE);   fflush(stdout);
+    printf("NoteDisplay::on button press=%d rel=%d\n", e.action == GLFW_PRESS, e.action==GLFW_RELEASE);   fflush(stdout);
 
     bool handled = false;
 

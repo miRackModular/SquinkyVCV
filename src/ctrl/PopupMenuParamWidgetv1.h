@@ -32,9 +32,7 @@ public:
 
 inline void PopupMenuParamWidget::onChange(const ::rack::event::Change& e) 
  {
-     DEBUG("PopupMenuParamWidget::onChange");
      if (!this->paramQuantity) {
-         DEBUG("no param quantity");
          return;            // no module
      }
     // process ourself to update the text label
@@ -46,7 +44,6 @@ inline void PopupMenuParamWidget::onChange(const ::rack::event::Change& e)
             return;
         }
         this->text = labels[index];
-        DEBUG("set text %s", this->text.c_str());
     }
 
     // Delegate to base class to change param value
