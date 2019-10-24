@@ -12,6 +12,12 @@
 	"modules":
 	[
 		{
+			"slug": "squinkylabs-blank",
+			"name": "BLANK",
+			"description": "Triple VCO with even waveform",
+			"tags": ["VCO", "Multiple"]
+		},
+		{
 			"slug": "squinkylabs-ev3",
 			"name": "EV3",
 			"description": "Triple VCO with even waveform",

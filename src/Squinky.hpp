@@ -25,7 +25,7 @@
 #define _MIX_STEREO
 #define _USERKB
 
-//#define _BLANKMODULE
+#define _BLANKMODULE
 
 #define _MIX4
 #define _MIXM
