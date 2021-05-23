@@ -9,11 +9,11 @@
 #include "MultiLag.h"
 #include "ObjectCache.h"
 
-namespace rack {
-    namespace engine {
-        struct Module;
-    }
-}
+// namespace rack {
+//     namespace engine {
+//         struct Module;
+//     }
+// }
 using Module = ::rack::engine::Module;
 
 template <class TBase>

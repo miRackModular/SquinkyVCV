@@ -6,11 +6,11 @@
 
 #include "ctrl/SqHelper.h"
 
-namespace rack {
-    namespace app {
-        struct ModuleWidget;
-    }
-}
+// namespace rack {
+//     namespace app {
+//         struct ModuleWidget;
+//     }
+// }
 
 using ModuleWidget =  ::rack::app::ModuleWidget;
 using Menu = ::rack::ui::Menu;

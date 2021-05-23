@@ -14,11 +14,11 @@
 
 #define _NN     // normaled mono mode
 
-namespace rack {
-    namespace engine {
-        struct Module;
-    }
-}
+// namespace rack {
+//     namespace engine {
+//         struct Module;
+//     }
+// }
 
 template <class TBase>
 class MixStereoDescription : public IComposite

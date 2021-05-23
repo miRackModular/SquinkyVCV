@@ -1,6 +1,10 @@
 #pragma once
 
-#include <immintrin.h>
+#if TARGET_OS_MACCATALYST
+	#include <immintrin.h>
+#else
+    #include "arm_simd.h"
+#endif
 #include <random>
 #if !defined(M_PI)
 #define M_PI float(3.14159265358979323846264338327950288)
@@ -27,6 +31,8 @@
 #if defined(_MSC_VER)
 #pragma warning (pop)
 #endif
+
+#include "rack.hpp"
 
 /**
  * A wrapper around rack's math functions.

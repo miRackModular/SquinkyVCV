@@ -14,11 +14,11 @@
 #include "FFT.h"
 #include "FFTCrossFader.h"
 
-namespace rack {
-    namespace engine {
-        struct Module;
-    }
-}
+// namespace rack {
+//     namespace engine {
+//         struct Module;
+//     }
+// }
 using Module = ::rack::engine::Module;
 class NoiseMessage;
 

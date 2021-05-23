@@ -16,7 +16,7 @@ class WidgetComposite
 {
 public:
 
-    using Port = ::rack::engine::Port;
+    // using Port = ::rack::engine::Port;
     using ProcessArgs = ::rack::engine::Module::ProcessArgs;
     
     WidgetComposite(::rack::engine::Module * parent) :

@@ -34,11 +34,11 @@ namespace std {
 #endif
 
 
-namespace rack {
-    namespace engine {
-        struct Module;
-    }
-}
+// namespace rack {
+//     namespace engine {
+//         struct Module;
+//     }
+// }
 
 /**
  Perf: 10.4 before new features

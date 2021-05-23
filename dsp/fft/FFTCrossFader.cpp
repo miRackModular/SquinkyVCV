@@ -1,4 +1,5 @@
 
+#include "rack.hpp"
 #include "ColoredNoise.h"
 #include "FFTCrossFader.h"
 #include <assert.h>

@@ -79,7 +79,7 @@
 			"name": "Booty Shifter",
 			"description": "Frequency Shifter",
 			"manualUrl": "https://github.com/squinkylabs/SquinkyVCV/blob/main/docs/shifter.md",
-			"tags": ["Ring Modulator", "effect"]
+			"tags": ["Ring Modulator", "Effect"]
 		},
 		{
 			"slug": "squinkylabs-sequencer",

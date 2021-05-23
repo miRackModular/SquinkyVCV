@@ -2,6 +2,29 @@
 
 #include "ToggleManager2.h"
 
+struct SqSvgParamToggleButton : api0::SVGSwitch, api0::ToggleSwitch
+{
+    std::shared_ptr<ToggleManager2<SqSvgParamToggleButton>> manager;
+
+    void registerManager(std::shared_ptr<ToggleManager2<SqSvgParamToggleButton>> m) {
+        manager = m;
+    }
+
+    void onDragStart(event::DragStart &e) {
+        ToggleSwitch::onDragStart(e);
+
+        //TODO: allow multiple with ctrl key
+        if (manager && !api0::windowIsShiftPressed())
+            manager->go(this);
+    }
+
+    void turnOff() {
+        setValue(0);
+    }
+
+};
+
+#if 0
 /**
  * An SvgButton, but in stead of being momentary it toggles between values.
  */
@@ -209,3 +232,4 @@ inline void SqSvgParamToggleButton::onDragDrop(const event::DragDrop &e)
     const float value = getValue();
     SqHelper::setValue(this, value);
  }
+ #endif

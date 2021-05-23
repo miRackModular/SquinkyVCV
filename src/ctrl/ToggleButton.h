@@ -13,24 +13,26 @@
 class ToggleButton : public ::rack::app::SvgSwitch
 {
 public:
-    ::rack::app::CircularShadow* shadowToDelete = nullptr;
+    // ::rack::app::CircularShadow* shadowToDelete = nullptr;
 
     ~ToggleButton()
     {
-        if (shadowToDelete) {
-            delete shadowToDelete;
-        }
+        // if (shadowToDelete) {
+        //     delete shadowToDelete;
+        // }
     }
     
     ToggleButton()
     {
-        // The default shadow gives a look we don't want 
-        auto shadowToDelete = this->shadow;
-        this->fb->removeChild(shadowToDelete);
+        // // The default shadow gives a look we don't want 
+        // auto shadowToDelete = this->shadow;
+        // this->fb->removeChild(shadowToDelete);
 
         // old one had default size 0
         this->box.size.y = 0;
         this->box.size.x = 0;
+
+        shadow->visible = false;
     }
 
     // Old switch took relative paths into plugin bundle

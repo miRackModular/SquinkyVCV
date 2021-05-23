@@ -1,13 +1,13 @@
 #pragma once
 
-namespace rack {
-namespace ui {
-    struct Menu;
-}
-namespace app {
-    struct ModuleWidget;
-}
-}
+// namespace rack {
+// namespace ui {
+//     struct Menu;
+// }
+// namespace app {
+//     struct ModuleWidget;
+// }
+// }
 
 using Menu = ::rack::ui::Menu;
 using ModuleWidget = ::rack::app::ModuleWidget;

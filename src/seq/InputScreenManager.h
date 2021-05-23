@@ -4,11 +4,11 @@
 #include <vector>
 
 class InputScreen;
-namespace rack {
-    namespace math {
-        struct Vec;    
-    }
-}
+// namespace rack {
+//     namespace math {
+//         struct Vec;    
+//     }
+// }
 
 using InputScreenPtr = std::shared_ptr<InputScreen>;
 

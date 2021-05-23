@@ -88,6 +88,7 @@ struct NKK2 : SqHelper::SvgSwitch
             asset::system("res/ComponentLibrary/NKK_0.svg").c_str()));
         addFrame(::rack::appGet()->window->loadSvg(
             asset::system("res/ComponentLibrary/NKK_2.svg").c_str()));
+        shadow->visible = false;
     }
 };
 

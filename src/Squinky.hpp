@@ -22,21 +22,21 @@
 #define _FILT
 //#define _CH10
 //#define _LFNB
-#define _MIX_STEREO
+// #define _MIX_STEREO
 #define _USERKB
 //#define _CHAOS
 //#define _DG
 
 //#define _BLANKMODULE
 
-#define _MIX4
-#define _MIXM
-#define _DTMODULE
+// #define _MIX4
+// #define _MIXM
+// #define _DTMODULE
 
-#define _SEQ4
-#define _WVCO
-#define _SUB
-#define _SINES
+// #define _SEQ4
+// #define _WVCO
+// #define _SUB
+// #define _SINES
 
 using namespace ::rack;
 

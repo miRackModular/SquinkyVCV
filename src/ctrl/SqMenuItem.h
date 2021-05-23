@@ -82,9 +82,10 @@ struct SqMenuItem_BooleanParam : ::rack::MenuItem {
 
     void onAction(const sq::EventAction& e) override {
         const float newValue = isOn() ? 0 : 1;
-        if (widget->paramQuantity) {
-            widget->paramQuantity->setValue(newValue);
-        }
+        // if (widget->paramQuantity) {
+        //     widget->paramQuantity->setValue(newValue);
+        // }
+        widget->setValue(newValue);
 
         sq::EventChange ec;
         widget->onChange(ec);
@@ -98,9 +99,10 @@ struct SqMenuItem_BooleanParam : ::rack::MenuItem {
 private:
     bool isOn() {
         bool ret = false;
-        if (widget->paramQuantity) {
-            ret = widget->paramQuantity->getValue() > .5f;
-        }
+        // if (widget->paramQuantity) {
+        //     ret = widget->paramQuantity->getValue() > .5f;
+        // }
+        ret = widget->getValue() > .5f;
 
         return ret;
     }

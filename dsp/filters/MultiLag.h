@@ -6,8 +6,12 @@
 
 #include <assert.h>
 #include <cmath>
-#include <xmmintrin.h>
-#include <mmintrin.h>
+#if TARGET_OS_MACCATALYST
+    #include <xmmintrin.h>
+    #include <mmintrin.h>
+#else
+    #include "arm_simd.h"
+#endif
 
 #define _LLOOK
 #define _LPSSE

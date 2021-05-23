@@ -8,11 +8,11 @@
 #include "ObjectCache.h"
 #include "SqMath.h"
 
-namespace rack {
-    namespace engine {
-        struct Module;
-    }
-}
+// namespace rack {
+//     namespace engine {
+//         struct Module;
+//     }
+// }
 using Module = ::rack::engine::Module;
 
 template <class TBase>
@@ -340,7 +340,7 @@ template <class TBase>
 inline IComposite::Config EV3Description<TBase>::getParam(int i)
 {
     const float numWaves = (float) EV3<TBase>::Waves::END;
-    const float defWave = (float) EV3<TBase>::Waves::SIN;
+    const float defWave = (float) EV3<TBase>::Waves::NONE;
 
     Config ret(0, 1, 0, "");
     switch (i) {
@@ -370,7 +370,7 @@ inline IComposite::Config EV3Description<TBase>::getParam(int i)
             ret.active = false;                 // this one is unused
             break;
         case EV3<TBase>::WAVE1_PARAM:
-            ret = {0.0f, numWaves, defWave, "Waveform (VCO 1)"};
+            ret = {0.0f, numWaves-1, defWave, "Waveform (VCO 1)"};
             break;
         case EV3<TBase>::PW1_PARAM:
             ret = {-1.0f, 1.0f, 0, "Pulse width (VCO 1)"};
@@ -394,7 +394,7 @@ inline IComposite::Config EV3Description<TBase>::getParam(int i)
             ret = {0.0f, 1.0f, 0.0f, "Hard sync, VCO 1->2"};
             break;
         case EV3<TBase>::WAVE2_PARAM:
-            ret = {0.0f, numWaves, defWave, "Waveform (VCO 2)"};
+            ret = {0.0f, numWaves-1, defWave, "Waveform (VCO 2)"};
             break;
         case EV3<TBase>::PW2_PARAM:
             ret = {-1.0f, 1.0f, 0, "Pulse width (VCO 2)"};
@@ -419,7 +419,7 @@ inline IComposite::Config EV3Description<TBase>::getParam(int i)
             ret = {0.0f, 1.0f, 0.0f, "Hard sync, VCO 1->3"};
             break;
         case EV3<TBase>::WAVE3_PARAM:
-            ret = {0.0f, numWaves, defWave, "Waveform (VCO 3)"};
+            ret = {0.0f, numWaves-1, defWave, "Waveform (VCO 3)"};
             break;
         case EV3<TBase>::PW3_PARAM:
             ret = {-1.0f, 1.0f, 0, "Pulse width (VCO 3)"};

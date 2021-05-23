@@ -8,11 +8,11 @@
 #include "BiquadState.h"
 #include "HilbertFilterDesigner.h"
 
-namespace rack {
-    namespace engine {
-        struct Module;
-    }
-}
+// namespace rack {
+//     namespace engine {
+//         struct Module;
+//     }
+// }
 using Module = ::rack::engine::Module;
 
 template <class TBase>

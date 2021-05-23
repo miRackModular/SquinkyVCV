@@ -22,18 +22,19 @@ public:
     }
 
     void draw(const DrawArgs &arg) override;
-    void onButton(const ::rack::event::Button &e) override;
-    void onChange(const ::rack::event::Change &e) override;
-    void onAction(const ::rack::event::Action &e) override;
+    // void onButton(const ::rack::event::Button &e) override;
+    void onDragDrop(::rack::event::DragDrop &e) override;
+    void onChange(::rack::event::Change &e) override;
+    void onAction(::rack::event::Action &e) override;
 };
 
-inline void PopupMenuParamWidget::onChange(const ::rack::event::Change &e) {
-    if (!this->paramQuantity) {
-        return;  // no module
-    }
+inline void PopupMenuParamWidget::onChange(::rack::event::Change &e) {
+    // if (!this->paramQuantity) {
+    //     return;  // no module
+    // }
 
     // process ourself to update the text label
-    const int index = (int)std::round(this->paramQuantity->getValue());
+    const int index = (int)std::round(getValue());
     if (!labels.empty()) {
         if (index < 0 || index >= (int)labels.size()) {
             fprintf(stderr, "index is outside label ranges %d\n", index);
@@ -51,11 +52,18 @@ inline void PopupMenuParamWidget::draw(const DrawArgs &args) {
     bndChoiceButton(args.vg, 0.0, 0.0, box.size.x, box.size.y, BND_CORNER_NONE, state, -1, text.c_str());
 }
 
-inline void PopupMenuParamWidget::onButton(const ::rack::event::Button &e) {
-    if ((e.button == GLFW_MOUSE_BUTTON_LEFT) && (e.action == GLFW_PRESS)) {
-        ::rack::event::Action ea;
-        onAction(ea);
-        sq::consumeEvent(&e, this);
+// inline void PopupMenuParamWidget::onButton(const ::rack::event::Button &e) {
+//     if ((e.button == GLFW_MOUSE_BUTTON_LEFT) && (e.action == GLFW_PRESS)) {
+//         ::rack::event::Action ea;
+//         onAction(ea);
+//         sq::consumeEvent(&e, this);
+//     }
+// }
+
+void PopupMenuParamWidget::onDragDrop(::rack::event::DragDrop &e) {
+    if (e.origin == this) {
+        ::rack::event::Action eAction;
+        onAction(eAction);
     }
 }
 
@@ -73,18 +81,18 @@ public:
     const int index;
     PopupMenuParamWidget *const parent;
 
-    void onAction(const ::rack::event::Action &e) override {
+    void onAction(::rack::event::Action &e) override {
         parent->text = this->text;
-        ::rack::event::Change ce;
-        // DEBUG("popup onAction, parent = %p, paramq = %p", parent, parent->paramQuantity);
-        if (parent->paramQuantity) {
-            parent->paramQuantity->setValue(index);
-        }
-        parent->onChange(ce);
+        // ::rack::event::Change ce;
+        // // DEBUG("popup onAction, parent = %p, paramq = %p", parent, parent->paramQuantity);
+        // if (parent->paramQuantity) {
+        //     parent->paramQuantity->setValue(index);
+        // }
+        parent->setValue(index);
     }
 };
 
-inline void PopupMenuParamWidget::onAction(const ::rack::event::Action &e) {
+inline void PopupMenuParamWidget::onAction(::rack::event::Action &e) {
     ::rack::ui::Menu *menu = ::rack::createMenu();
 
     // is choice button the right base class?

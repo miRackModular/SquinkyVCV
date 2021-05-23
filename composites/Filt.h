@@ -13,11 +13,11 @@
 #include <memory>
 #include <string>
 
-namespace rack {
-    namespace engine {
-        struct Module;
-    }
-}
+// namespace rack {
+//     namespace engine {
+//         struct Module;
+//     }
+// }
 using Module = ::rack::engine::Module;
 
 /**
@@ -187,9 +187,9 @@ inline void Filt<TBase>::setupProcessingVars()
 {
     // in nomrmal poly mode, we use one dsp per channel in the left input.
     // but of only right input connected, we still need one.
-    processingVars.numFiltersActive =  TBase::inputs[L_AUDIO_INPUT].channels;
+    processingVars.numFiltersActive =  TBase::inputs[L_AUDIO_INPUT].getChannels();
     if (processingVars.numFiltersActive == 0) {
-        processingVars.numFiltersActive = TBase::inputs[R_AUDIO_INPUT].channels;
+        processingVars.numFiltersActive = TBase::inputs[R_AUDIO_INPUT].getChannels();
     }
 
     const bool li = TBase::inputs[L_AUDIO_INPUT].isConnected();
@@ -280,7 +280,7 @@ inline void Filt<TBase>::step()
 
     // if audio, clear out 
     if (processingVars.numFiltersActive == 0) {
-        for (int i = 0; i < TBase::outputs[L_AUDIO_OUTPUT].channels; ++i) {
+        for (int i = 0; i < TBase::outputs[L_AUDIO_OUTPUT].getChannels(); ++i) {
             TBase::outputs[L_AUDIO_OUTPUT].setVoltage(0, i);
         }
     }

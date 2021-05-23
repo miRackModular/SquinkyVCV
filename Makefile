@@ -17,7 +17,7 @@ CXXFLAGS +=
 
 # compile for V1 vs 0.6
 FLAGS += -D __V1x
-FLAGS += -D _SEQ
+# FLAGS += -D _SEQ
 
 # Command line variable to turn on "experimental" modules
 ifdef _EXP
@@ -40,14 +40,16 @@ LDFLAGS += -lpthread
 SOURCES += $(wildcard src/*.cpp)
 SOURCES += $(wildcard dsp/**/*.cpp)
 SOURCES += $(wildcard dsp/third-party/falco/*.cpp)
-SOURCES += $(wildcard dsp/third-party/midifile/*.cpp)
+# SOURCES += $(wildcard dsp/third-party/midifile/*.cpp)
 SOURCES += dsp/third-party/kiss_fft130/kiss_fft.c
 SOURCES += dsp/third-party/kiss_fft130/tools/kiss_fftr.c
 SOURCES += $(wildcard sqsrc/**/*.cpp)
-SOURCES += $(wildcard midi/**/*.cpp)
+# SOURCES += $(wildcard midi/**/*.cpp)
 SOURCES += $(wildcard src/third-party/*.cpp)
-SOURCES += $(wildcard src/seq/*.cpp)
-SOURCES += $(wildcard src/kbd/*.cpp)
+# SOURCES += $(wildcard src/seq/*.cpp)
+# SOURCES += $(wildcard src/kbd/*.cpp)
+
+SOURCES := $(filter-out sqsrc/util/InteropClipboard.cpp,$(SOURCES))
 
 # include res and presets folder
 DISTRIBUTABLES += $(wildcard LICENSE*) res presets

@@ -1,9 +1,5 @@
-<svg id="svg15246" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-  <title>Blue302</title>
-  <g id="layer1">
-    <path id="path7663" d="M30,15A15,15,0,1,1,15,0,15,15,0,0,1,30,15" transform="translate(0 0)"/>
-    <path id="path7665" d="M26.87,15A11.87,11.87,0,1,1,15,3.14h0A11.86,11.86,0,0,1,26.87,15Z" transform="translate(0 0)" style="fill: none;stroke: #636363;stroke-miterlimit: 10;stroke-width: 0.9px"/>
-    <path id="path7667" d="M23.47,15A8.47,8.47,0,1,1,15,6.54,8.47,8.47,0,0,1,23.47,15h0" transform="translate(0 0)" style="fill: #307dee"/>
-    <path id="path7669" d="M16.39.07C15.93.07,15.47,0,15,0a9,9,0,0,0-1.38.07V7h2.77Z" transform="translate(0 0)" style="fill: #307dee"/>
-  </g>
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.5 15C27.5 21.9036 21.9036 27.5 15 27.5C8.09644 27.5 2.5 21.9036 2.5 15C2.5 8.09644 8.09644 2.5 15 2.5C21.9036 2.5 27.5 8.09644 27.5 15Z" fill="#3481D4" stroke="#172229" stroke-width="5"/>
+<path d="M15 0L20.1962 9H9.80385L15 0Z" fill="#3481D4"/>
+<circle cx="15" cy="15" r="5.5" stroke="#172229" stroke-opacity="0.3"/>
 </svg>

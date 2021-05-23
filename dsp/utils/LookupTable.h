@@ -6,7 +6,11 @@
 #include <assert.h>
 #include <cmath>
 #include <memory>
-#include <emmintrin.h>
+#if TARGET_OS_MACCATALYST
+    #include <emmintrin.h>
+#else
+    #include "arm_simd.h"
+#endif
 #include <functional>
 
 template <typename T> class LookupTableParams;
@@ -173,15 +177,17 @@ inline void LookupTable<T>::initDiscrete(LookupTableParams<T>& params, int numEn
 template<>
 inline int LookupTable<double>::cvtt(double* input)
 {
-    auto x = _mm_load_sd(input);
-    return _mm_cvttsd_si32(x);
+    // auto x = _mm_load_sd(input);
+    // return _mm_cvttsd_si32(x);
+    return (int)*input;
 }
 
 template<>
 inline int LookupTable<float>::cvtt(float* input)
 {
-    auto x = _mm_load_ss(input);
-    return _mm_cvttss_si32(x);
+    // auto x = _mm_load_ss(input);
+    // return _mm_cvttss_si32(x);
+    return (int)*input;
 }
 
 /***************************************************************************/

@@ -8,11 +8,11 @@
 #include <assert.h>
 #include <memory>
 
-namespace rack {
-    namespace engine {
-        struct Module;
-    }
-}
+// namespace rack {
+//     namespace engine {
+//         struct Module;
+//     }
+// }
 
 using Module = ::rack::engine::Module;
 
@@ -132,14 +132,14 @@ inline void DrumTrigger<TBase>::stepn(int n)
     int pitches[16] = {-1};
     bool gates[16] = {false};
 
-    int activeInputs = std::min(numTriggerChannels, int(TBase::inputs[GATE_INPUT].channels));
-    activeInputs = std::min(activeInputs, int(TBase::inputs[CV_INPUT].channels));
+    int activeInputs = std::min(numTriggerChannels, int(TBase::inputs[GATE_INPUT].getChannels()));
+    activeInputs = std::min(activeInputs, int(TBase::inputs[CV_INPUT].getChannels()));
     for (int i = 0; i < activeInputs; ++i) {
-        const float cv = TBase::inputs[CV_INPUT].voltages[i];
+        const float cv = TBase::inputs[CV_INPUT].getVoltage(i);
         const int index = PitchUtils::cvToSemitone(cv) - 48;
 
         // TODO: use schmidt
-        const bool gInput = TBase::inputs[GATE_INPUT].voltages[i] > 1;
+        const bool gInput = TBase::inputs[GATE_INPUT].getVoltage(i) > 1;
         pitches[i] = index;
         gates[i] = gInput;
     }

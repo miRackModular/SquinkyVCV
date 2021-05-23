@@ -20,6 +20,7 @@ struct NKK2 : app::SvgSwitch {
         // add all up and all down image, no middle
 		addFrame(::rack::appGet()->window->loadSvg(asset::system("res/ComponentLibrary/NKK_0.svg")));
 		addFrame(::rack::appGet()->window->loadSvg(asset::system("res/ComponentLibrary/NKK_2.svg")));
+        shadow->visible = false;
 	}
 };
 

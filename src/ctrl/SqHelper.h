@@ -91,20 +91,23 @@ public:
     }
 
     static float getValue(::rack::app::ParamWidget* widget) {
-        return (widget->paramQuantity) ? widget->paramQuantity->getValue() : 0;
+        // return (widget->paramQuantity) ? widget->paramQuantity->getValue() : 0;
+        return widget->getValue();
     }
 
     static void setValue(::rack::app::ParamWidget* widget, float v) {
-        if (widget->paramQuantity) {
-            widget->paramQuantity->setValue(v);
-        }
+        // if (widget->paramQuantity) {
+        //     widget->paramQuantity->setValue(v);
+        // }
+        widget->setValue(v);
     }
 };
 
-#define DECLARE_MANUAL(TEXT, URL)                                         \
-    void appendContextMenu(Menu* theMenu) override {                      \
-        ::rack::ui::MenuLabel* spacerLabel = new ::rack::ui::MenuLabel(); \
-        theMenu->addChild(spacerLabel);                                   \
-        ManualMenuItem* manual = new ManualMenuItem(TEXT, URL);           \
-        theMenu->addChild(manual);                                        \
-    }
+// #define DECLARE_MANUAL(TEXT, URL)                                         \
+//     void appendContextMenu(Menu* theMenu) override {                      \
+//         ::rack::ui::MenuLabel* spacerLabel = new ::rack::ui::MenuLabel(); \
+//         theMenu->addChild(spacerLabel);                                   \
+//         ManualMenuItem* manual = new ManualMenuItem(TEXT, URL);           \
+//         theMenu->addChild(manual);                                        \
+//     }
+#define DECLARE_MANUAL(TEXT, URL)

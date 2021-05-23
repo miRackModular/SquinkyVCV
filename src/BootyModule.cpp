@@ -144,7 +144,7 @@ struct RangeItem : MenuItem
     ChoiceButton* const rangeChoice;
 
 #ifdef __V1x
-    void onAction(const event::Action &e) override
+    void onAction(event::Action &e) override
 #else
     void onAction(EventAction &e) override
 #endif
@@ -165,7 +165,7 @@ struct RangeChoice : ChoiceButton
     }
     float * const output;
 #ifdef __V1x
-    void onAction(const event::Action &e) override
+    void onAction(event::Action &e) override
     {
         Menu* menu = createMenu();
 #else

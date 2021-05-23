@@ -33,7 +33,8 @@ class WaveformSwitch : public ::rack::ParamWidget {
 public:
     WaveformSwitch();
     void step() override;
-    void onButton(const event::Button& e) override;
+    // void onButton(const event::Button& e) override;
+    void onMouseDown(event::MouseDown &e) override;
 
 private:
     FramebufferWidget* fw = nullptr;
@@ -71,14 +72,23 @@ int WaveformSwitch::hitTest(float x, float y) {
     return index;
 }
 
-inline void WaveformSwitch::onButton(const event::Button& e) {
-    if (e.action == GLFW_PRESS && (e.button == GLFW_MOUSE_BUTTON_LEFT)) {
-        int hit = hitTest(e.pos.x, e.pos.y);
+// inline void WaveformSwitch::onButton(const event::Button& e) {
+//     if (e.action == GLFW_PRESS && (e.button == GLFW_MOUSE_BUTTON_LEFT)) {
+//         int hit = hitTest(e.pos.x, e.pos.y);
 
-        if (hit >= 0) {
-            e.consume(this);
-            SqHelper::setValue(this, hit);
-        }
+//         if (hit >= 0) {
+//             e.consume(this);
+//             SqHelper::setValue(this, hit);
+//         }
+//     }
+// }
+
+void WaveformSwitch::onMouseDown(event::MouseDown &e) {
+    ParamWidget::onMouseDown(e);
+    int hit = hitTest(e.pos.x, e.pos.y);
+    if (hit >= 0) {
+        e.consume(this);
+        SqHelper::setValue(this, hit);
     }
 }
 
@@ -100,14 +110,14 @@ void WaveformSwitch::step() {
         auto cell = getCell(val);
         cell->setState(true);
         currentValue = val;
-        fw->dirty = true;
+        dirty = true;
     }
     ParamWidget::step();
 }
 
 inline WaveformSwitch::WaveformSwitch() {
-    fw = new FramebufferWidget();
-    this->addChild(fw);
+    // fw = new FramebufferWidget();
+    // this->addChild(fw);
     addSvg(0, "res/waveforms-6-08.svg", "res/waveforms-6-07.svg");
     addSvg(0, "res/waveforms-6-06.svg", "res/waveforms-6-05.svg");
     addSvg(0, "res/waveforms-6-02.svg", "res/waveforms-6-01.svg");
@@ -121,6 +131,8 @@ inline WaveformSwitch::WaveformSwitch() {
         cells[last]->box.pos.x + cells[last]->box.size.x,
         cells[last]->box.pos.y + cells[last]->box.size.y);
     this->box.size = actualSize;
+
+    canCache = true;
 }
 
 void WaveformSwitch::addSvg(int row, const char* resOff, const char* resOn) {
@@ -138,6 +150,6 @@ void WaveformSwitch::addSvg(int row, const char* resOff, const char* resOn) {
 
     ++_col;
 
-    fw->addChild(newCell);
+    addChild(newCell);
     cells.push_back(newCell);
 }

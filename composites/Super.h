@@ -6,11 +6,11 @@
 #include "IComposite.h"
 //#include "ObjectCache.h"
 
-namespace rack {
-    namespace engine {
-        struct Module;
-    }
-}
+// namespace rack {
+//     namespace engine {
+//         struct Module;
+//     }
+// }
 using Module = ::rack::engine::Module;
 
 template <class TBase>
@@ -178,7 +178,7 @@ inline void Super<TBase>::stepn(int n)
     float mixTrimParam = TBase::params[MIX_TRIM_PARAM].value;
     const bool hardPan = TBase::params[HARD_PAN_PARAM].value > .5;
 
-    const int numChannels = std::max<int>(1, TBase::inputs[CV_INPUT].channels);
+    const int numChannels = std::max<int>(1, TBase::inputs[CV_INPUT].getChannels());
     for (int i=0; i< numChannels; ++i) {
         dspCommon.stepn(n, i,  oversampleRate, sampleTime, TBase::inputs[CV_INPUT],
             fineTuneParam, semiParam, octaveParam, TBase::inputs[FM_INPUT],
@@ -201,7 +201,7 @@ inline void Super<TBase>::step()
     const int rate = getOversampleRate();
 
     // even unpatched we run 1 channel
-    const int numChannels = std::max<int>(1, TBase::inputs[CV_INPUT].channels);
+    const int numChannels = std::max<int>(1, TBase::inputs[CV_INPUT].getChannels());
     dspCommon.step(numChannels,isStereo, TBase::outputs[MAIN_OUTPUT_LEFT], TBase::outputs[MAIN_OUTPUT_RIGHT],
         rate,
         TBase::inputs[TRIGGER_INPUT]);

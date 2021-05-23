@@ -11,13 +11,14 @@
 
 
 #ifdef __PLUGIN
-namespace rack {
-namespace engine {
-struct Input;
-struct Param;
-struct Output;
-}
-}  // namespace rack
+// namespace rack {
+// namespace engine {
+// struct Input;
+// struct Param;
+// struct Output;
+// }
+// }  // namespace rack
+#include <rack.hpp>
 #else
 #include "TestComposite.h"
 #endif
